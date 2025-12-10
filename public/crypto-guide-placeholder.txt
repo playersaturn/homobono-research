@@ -1,0 +1,10 @@
+Este é um arquivo placeholder para o Guia Mestre Crypto.
+Em produção, este arquivo seria substituído pelo PDF real.
+
+Conteúdo do Guia:
+1. Introdução ao Bitcoin
+2. Como analisar Altcoins
+3. Gestão de Risco
+4. Carteiras Recomendadas
+
+HOMOBONO Research - Todos os direitos reservados.
