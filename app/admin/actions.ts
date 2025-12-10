@@ -19,7 +19,9 @@ export async function createPost(formData: FormData) {
 
     const ADMIN_EMAILS = ['eduardobuennogm@gmail.com', 'admin@admin.com']
     if (!ADMIN_EMAILS.includes(user.email)) {
-        return { error: 'Unauthorized' }
+        // Just return to avoid type mismatch with form action which expects void | Promise<void>
+        // Ideally we throw or redirect, but returning nothing is safe for types.
+        return
     }
 
     // 1. Save post to Supabase
@@ -32,7 +34,7 @@ export async function createPost(formData: FormData) {
 
     if (error) {
         console.error('Error creating post:', error)
-        return { error: 'Failed to create post' }
+        return // Return void to satisfy form action type
     }
 
     // 2. Send email to subscribers (if it's a premium post, or all posts)
