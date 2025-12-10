@@ -4,7 +4,10 @@ import { createClient } from '@/utils/supabase/server'
 import { redirect } from 'next/navigation'
 import { Resend } from 'resend'
 
-const resend = new Resend(process.env.RESEND_API_KEY)
+// Initialize Resend only if valid key is present, otherwise mock strictly for avoiding build errors
+const resend = process.env.RESEND_API_KEY
+    ? new Resend(process.env.RESEND_API_KEY)
+    : { emails: { send: async () => console.warn('Resend API Key missing') } } as unknown as Resend
 
 export async function createPost(formData: FormData) {
     const supabase = await createClient()
